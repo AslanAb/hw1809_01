@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+1.	Дана строка. Если в строке больше трех различных символов, <br> 
+то удалить в строке три любых различных символа, <br>
+иначе добавить в строку в произвольных местах новые элементы так, <br>
+чтобы количество различных элементов было больше трех.
+<body>
+    <script>
+        // number 1
+        let a = 'abcd abcd'
+        let b = 'abc abc'
+        function fn(item){
+            let arr = []
+            for(let key of item){
+                if(arr.join('').includes(key) == false){
+                    arr.push(key)
+                }
+            }
+            console.log(arr.join(''))
+            if(arr.length > 3){
+                let newArr = item.split('')
+                let result = []
+                for(let i = 0; i <= 2; i++){
+                    newArr.splice(newArr.indexOf(arr[i]), 1)
+                }
+                result = newArr.join('')
+                console.log(result)
+            }
+        }
+        fn(a)
+        fn(b)
+        // number 2
+        let c = 'zzzzzzzzzzzzzzzzz Privet iz daleeekogo Jupitera'
+        function reverseSlova(item){
+            let slova = item.toLowerCase().split(' ')
+            maxIndex = null
+            minIndex = null
+            for(let i = 0; i <= slova.length-1; i++){
+                for(j = i+1; j <= slova.length-1; j++){
+                    if(slova[j].length < slova[i].length){
+                    maxIndex = i
+                    }else{
+                        maxIndex = j
+                    }
+                }
+            }
+            for(let i = 0; i <= slova.length-1; i++){
+                for(j = i+1; j <= slova.length-1; j++){
+                    if(slova[j].length > slova[i].length){
+                    minIndex = i
+                    }else{
+                        minIndex = j
+                    }
+                }
+            }
+            let maxStr = slova[maxIndex]
+            let minStr = slova[minIndex]
+            slova[maxIndex] = `${minStr}`
+            slova[minIndex] = `${maxStr}`
+            console.log(slova.join(' '))
+        }
+        reverseSlova(c)
+
+        
+    </script>
+</body>
+</html>
